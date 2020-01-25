@@ -20,16 +20,12 @@ public class GameActivity extends AppCompatActivity {
     private Button blue_Button;
     private Button yellow_Button;
 
-    private LinkedList<Integer> colors= new LinkedList<>();
+    private LinkedList<Integer> colors;
     private int score;  //incrementa ogni turno
     private int blinks;  //currentTurn +2
 
     private int sequenceIndex;
     private int colorIndex;  //numero assagnato ad ogni colore RED=0, GREEN=1, BLUE=2, YELLOW=3
-
-
-    //DEBUG
-    //String string;
 
     private int rand;  //0, 1, 2, or 3
 
@@ -62,7 +58,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         //RED BUTTON
         red_Button = (Button)findViewById(R.id.red_Button);
         //Listener
@@ -78,10 +73,8 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex)) {
+                    if (correctClick(colorIndex, sequenceIndex))
                         win();
-                        ((TextView)findViewById(R.id.actualScore)).setText(score);
-                    }
                     else
                         lost_game();
                 }
@@ -103,10 +96,8 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex)) {
+                    if (correctClick(colorIndex, sequenceIndex))
                         win();
-                        ((TextView)findViewById(R.id.actualScore)).setText(score);
-                    }
                     else
                         lost_game();
                 }
@@ -129,10 +120,8 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex)) {
+                    if (correctClick(colorIndex, sequenceIndex))
                         win();
-                        ((TextView)findViewById(R.id.actualScore)).setText(score);
-                    }
                     else
                         lost_game();
                 }
@@ -156,10 +145,8 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex)) {
+                    if (correctClick(colorIndex, sequenceIndex))
                         win();
-                        ((TextView)findViewById(R.id.actualScore)).setText(score);
-                    }
                     else
                         lost_game();
                 }
@@ -195,30 +182,13 @@ public class GameActivity extends AppCompatActivity {
                     break;
             }
         }
-
-        //DEBUG
-        /*
-        for(int i = 0; i<blinks; i++){
-            string += colors.get(i) + " ";
-        }
-
-         */
     }
 
     public void playGame () {
 
         blinks = 3;
-        score = 1;
+        score = 0;
         fillList(blinks);
-
-
-        //DEBUG
-        /*
-        Toast.makeText(GameActivity.this,
-                string,
-                Toast.LENGTH_SHORT).show();
-
-         */
 
         startSequence();
 
@@ -233,15 +203,8 @@ public class GameActivity extends AppCompatActivity {
         score++;
         blinks++;
         fillList(blinks);
-
-
-        //DEBUG
-        /*
-        Toast.makeText(GameActivity.this,
-                string,
-                Toast.LENGTH_SHORT).show();
-
-         */
+        TextView tv = (TextView)findViewById(R.id.actualScore);
+        tv.setText(String.valueOf(score));
 
         startSequence();
     }
@@ -268,6 +231,10 @@ public class GameActivity extends AppCompatActivity {
 
 
     public void startSequence() {
+        red_Button.setClickable(false);
+        blue_Button.setClickable(false);
+        green_Button.setClickable(false);
+        yellow_Button.setClickable(false);
         SequenceBlinksRunnable seqRun = new SequenceBlinksRunnable(this);
         Thread thread = new Thread(seqRun);
         thread.start();

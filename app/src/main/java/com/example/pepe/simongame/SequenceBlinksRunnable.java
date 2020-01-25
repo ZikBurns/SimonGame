@@ -28,6 +28,12 @@ public class SequenceBlinksRunnable implements Runnable {
     @Override
     public void run() {
         try {
+            /*
+            redButton.setEnabled(false);
+            blueButton.setEnabled(false);
+            greenButton.setEnabled(false);
+            yellowButton.setEnabled(false);
+            */
             Thread.sleep(1000);
             for (int i = 0; i < blinks; i++) {
                 int currentIndex = colors.get(i);
@@ -75,6 +81,11 @@ public class SequenceBlinksRunnable implements Runnable {
                         break;
                 }
             }
+            redButton.setClickable(true);
+            blueButton.setClickable(true);
+            greenButton.setClickable(true);
+            yellowButton.setClickable(true);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

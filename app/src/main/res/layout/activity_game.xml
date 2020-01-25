@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -25,6 +27,7 @@
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
         android:textColor="@color/color_Black"
+        android:text="0"
         android:textSize="25dp" />
 
     <Button
@@ -44,7 +47,7 @@
     <Button
         android:id="@+id/blue_Button"
         android:layout_width="206dp"
-        android:layout_height="343dp"
+        android:layout_height="344dp"
         android:layout_alignParentRight="true"
         android:background="@color/color_Blue" />
 
@@ -55,5 +58,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@color/color_Yellow" />
+
 
 </RelativeLayout>
