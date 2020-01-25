@@ -61,11 +61,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/temporalscore"
+        android:id="@+id/finalscore"
         android:layout_width="110dp"
         android:layout_height="66dp"
+        android:layout_marginTop="2dp"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="215dp" />
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,14 +32,17 @@ public class AftermatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("ERROR","Helloem");
+
         setContentView(R.layout.activity_aftermatch);
         Button button=findViewById(R.id.alrightbutton);
+        TextView fiasco=findViewById(R.id.finalscore);
+        int score=Score.getInstance().getScore();
+        fiasco.setText(""+score);
+        Log.d("ERROR","Helloem2");
     }
     public void onClickReturn(View view) {
         EditText et=findViewById(R.id.editText);
-        TextView temporalscore=findViewById(R.id.temporalscore);
         int score=Score.getInstance().getScore();
-        temporalscore.setText(score);
         String playerName=et.getText().toString();
         Records records= Records.getInstance();
         Map<String,Integer> map=records.getOrdered();

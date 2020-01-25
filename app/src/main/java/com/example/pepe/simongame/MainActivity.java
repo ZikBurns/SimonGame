@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void onClickPlay(View view){
-        startActivity(new Intent(this,AftermatchActivity.class));
+        startActivity(new Intent(this,GameActivity.class));
     }
     public void onClickScores(View view){
         startActivity(new Intent(this,ScoresActivity.class));
