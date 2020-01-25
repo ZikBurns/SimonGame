@@ -28,6 +28,7 @@ public class SequenceBlinksRunnable implements Runnable {
     @Override
     public void run() {
         try {
+            Thread.sleep(1000);
             for (int i = 0; i < blinks; i++) {
                 int currentIndex = colors.get(i);
 

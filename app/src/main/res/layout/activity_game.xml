@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="2"
-    android:gravity= "center"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="Score:"
+        android:textAllCaps="true"
+        android:textColor="@color/color_Black"
+        android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/red_Button"
-            android:layout_width="160dp"
-            android:layout_height="186dp"
-            android:background="@color/color_Red"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            />
-
-        <Button
-            android:id="@+id/green_Button"
-            android:layout_width="160dp"
-            android:layout_height="186dp"
-            android:background="@color/color_Green"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/actualScore"
+        android:layout_width="53dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="99dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:textColor="@color/color_Black"
+        android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/blue_Button"
-            android:layout_width="160dp"
-            android:layout_height="186dp"
-            android:background="@color/color_Blue"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"/>
+    <Button
+        android:id="@+id/red_Button"
+        android:layout_width="205dp"
+        android:layout_height="344dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_Red" />
 
-        <Button
-            android:id="@+id/yellow_Button"
-            android:layout_width="160dp"
-            android:layout_height="186dp"
-            android:background="@color/color_Yellow"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/green_Button"
+        android:layout_width="207dp"
+        android:layout_height="342dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_Green" />
 
+    <Button
+        android:id="@+id/blue_Button"
+        android:layout_width="206dp"
+        android:layout_height="343dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/color_Blue" />
 
+    <Button
+        android:id="@+id/yellow_Button"
+        android:layout_width="203dp"
+        android:layout_height="342dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_Yellow" />
 
-</LinearLayout>
+</RelativeLayout>

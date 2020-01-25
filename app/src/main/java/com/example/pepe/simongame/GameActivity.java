@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
     private Button yellow_Button;
 
     private LinkedList<Integer> colors= new LinkedList<>();
-    private int currentTurn;  //incrementa ogni turno
+    private int score;  //incrementa ogni turno
     private int blinks;  //currentTurn +2
 
     private int sequenceIndex;
@@ -77,8 +78,10 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(0, sequenceIndex))
+                    if (correctClick(colorIndex, sequenceIndex)) {
                         win();
+                        ((TextView)findViewById(R.id.actualScore)).setText(score);
+                    }
                     else
                         lost_game();
                 }
@@ -100,8 +103,10 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex))
+                    if (correctClick(colorIndex, sequenceIndex)) {
                         win();
+                        ((TextView)findViewById(R.id.actualScore)).setText(score);
+                    }
                     else
                         lost_game();
                 }
@@ -124,8 +129,10 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex))
+                    if (correctClick(colorIndex, sequenceIndex)) {
                         win();
+                        ((TextView)findViewById(R.id.actualScore)).setText(score);
+                    }
                     else
                         lost_game();
                 }
@@ -149,8 +156,10 @@ public class GameActivity extends AppCompatActivity {
                         lost_game();
                 }
                 else {
-                    if (correctClick(colorIndex, sequenceIndex))
+                    if (correctClick(colorIndex, sequenceIndex)) {
                         win();
+                        ((TextView)findViewById(R.id.actualScore)).setText(score);
+                    }
                     else
                         lost_game();
                 }
@@ -199,7 +208,7 @@ public class GameActivity extends AppCompatActivity {
     public void playGame () {
 
         blinks = 3;
-        currentTurn = 1;
+        score = 1;
         fillList(blinks);
 
 
@@ -221,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
                 "Win",
                 Toast.LENGTH_SHORT).show();
 
-        currentTurn++;
+        score++;
         blinks++;
         fillList(blinks);
 
@@ -252,7 +261,7 @@ public class GameActivity extends AppCompatActivity {
                 "YOU LOST",
                 Toast.LENGTH_SHORT).show();
 
-        Score.getInstance().setScore(currentTurn);
+        Score.getInstance().setScore(score);
         startActivity(new Intent(this,AftermatchActivity.class));
 
     }
