@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:background="@color/color_Black">
 
     <TextView
         android:id="@+id/textView"
@@ -14,8 +15,8 @@
         android:fontFamily="@font/alfa_slab_one"
         android:text="Score:"
         android:textAllCaps="true"
-        android:textColor="@color/color_Black"
-        android:textSize="25dp" />
+        android:textColor="@color/color_White"
+        android:textSize="25dp"/>
 
     <TextView
         android:id="@+id/actualScore"
@@ -26,7 +27,7 @@
         android:layout_marginRight="99dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
-        android:textColor="@color/color_Black"
+        android:textColor="@color/color_White"
         android:text="0"
         android:textSize="25dp" />
 
@@ -39,22 +40,22 @@
 
     <Button
         android:id="@+id/green_Button"
-        android:layout_width="207dp"
-        android:layout_height="342dp"
+        android:layout_width="205dp"
+        android:layout_height="344dp"
         android:layout_alignParentBottom="true"
         android:background="@color/color_Green" />
 
     <Button
         android:id="@+id/blue_Button"
-        android:layout_width="206dp"
+        android:layout_width="205dp"
         android:layout_height="344dp"
         android:layout_alignParentRight="true"
         android:background="@color/color_Blue" />
 
     <Button
         android:id="@+id/yellow_Button"
-        android:layout_width="203dp"
-        android:layout_height="342dp"
+        android:layout_width="205dp"
+        android:layout_height="344dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@color/color_Yellow" />

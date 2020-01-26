@@ -27,8 +27,8 @@ public class ScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scores);
 
         Button resetbutton=findViewById(R.id.reset);
-        //UNCOMMENT FOR HIDING RESET BUTTON
-        //resetbutton.setVisibility(View.GONE);
+        //COMMENT FOR HIDING RESET BUTTON
+        resetbutton.setVisibility(View.GONE);
 
 
         TextView multiLine = findViewById(R.id.textViewNames);

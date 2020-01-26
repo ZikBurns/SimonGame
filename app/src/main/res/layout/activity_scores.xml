@@ -4,44 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"><![CDATA[
-
-    android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]]>
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/scores"
-        android:layout_width="369dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="160dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="TOP 15 PLAYERS"
+
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/reset"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textViewNames"
@@ -65,11 +41,11 @@
 
     <Button
         android:id="@+id/reset"
-        android:layout_width="72dp"
+        android:layout_width="53dp"
         android:layout_height="58dp"
         android:onClick="onClickReset"
         android:text="RESET"
-        android:textSize="16sp"
+        android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

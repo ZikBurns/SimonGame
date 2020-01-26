@@ -12,6 +12,7 @@
     <color name="color_LightBlue">#041DF8</color>
     <color name="color_LightYellow">#FCE204</color>
     <color name="color_Black">#000000</color>
+    <color name="color_White">#FFFFFF</color>
 
 
 </resources>
