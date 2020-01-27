@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Button;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,"FIRST GAME PLAYED",Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Log.d("ERROR","ERROR");
-
         }
         setContentView(R.layout.activity_main);
     }

@@ -1,8 +1,13 @@
 package com.example.pepe.simongame;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.ParcelUuid;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,9 +16,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import data.Score;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class GameActivity extends AppCompatActivity {
+
 
 
     private Button red_Button;
@@ -32,10 +42,23 @@ public class GameActivity extends AppCompatActivity {
 
     private int rand;  //0, 1, 2, or 3
 
+    //Bluetooth variables
+    private OutputStream outputStream;
+    private InputStream inStream;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        //Inizialize bluetooth
+
+        try {
+            init();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         //Inizialize sounds
         buttonClickSound = MediaPlayer.create(this, R.raw.button_click_sound);
@@ -251,6 +274,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         red_Button.setBackgroundColor(0xffF80404);
+                                        try { write("0"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
 
@@ -258,6 +282,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         red_Button.setBackgroundColor(0xffE76B6B);
+                                        try { write("0"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
                                 Thread.sleep(500);
@@ -267,6 +292,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         green_Button.setBackgroundColor(0xff03F80A);
+                                        try { write("1"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
 
@@ -275,6 +301,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         green_Button.setBackgroundColor(0xff86F389);
+                                        try { write("1"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
                                 Thread.sleep(500);
@@ -283,6 +310,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         blue_Button.setBackgroundColor(0xff041DF8);
+                                        try { write("2"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
 
@@ -291,6 +319,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         blue_Button.setBackgroundColor(0xff5B6EDB);
+                                        try { write("2"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
                                 Thread.sleep(500);
@@ -299,6 +328,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         yellow_Button.setBackgroundColor(0xffFCE204);
+                                        try { write("3"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
                                 Thread.sleep(1000);
@@ -306,6 +336,7 @@ public class GameActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         yellow_Button.setBackgroundColor(0xffE4D97F);
+                                        try { write("3"); }  catch (IOException e) {Log.d("error",e.toString()); }
                                     }
                                 });
                                 Thread.sleep(500);
@@ -323,6 +354,34 @@ public class GameActivity extends AppCompatActivity {
             }
         };
         thread.start();
+    }
+
+
+    private void init() throws IOException {
+        BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (blueAdapter != null) {
+            if (blueAdapter.isEnabled()) {
+                Set<BluetoothDevice> bondedDevices = blueAdapter.getBondedDevices();
+
+                if (bondedDevices.size() > 0) {
+                    Object[] devices = (Object[]) bondedDevices.toArray();
+                    BluetoothDevice device = (BluetoothDevice) devices[0];
+                    ParcelUuid[] uuids = device.getUuids();
+                    BluetoothSocket socket = device.createRfcommSocketToServiceRecord(uuids[0].getUuid());
+                    socket.connect();
+                    outputStream = socket.getOutputStream();
+                    inStream = socket.getInputStream();
+                }
+
+                Log.e("error", "No appropriate paired devices.");
+            } else {
+                Log.e("error", "Bluetooth is disabled.");
+            }
+        }
+    }
+
+    public void write(String s) throws IOException {
+        outputStream.write(s.getBytes());
     }
 }
 
